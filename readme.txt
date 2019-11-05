@@ -16,3 +16,14 @@ HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历�
 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
 
 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本
+git checkout -- flie 删除工作区修改 回到修改前
+一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了
+这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：
+现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit
+git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+从现在起，只要本地作了提交，就可以通过命令git push origin master
+要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+
+此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
